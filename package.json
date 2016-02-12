@@ -1,0 +1,24 @@
+{
+  "name": "jasmine-blink1-reporter",
+  "version": "1.0.0",
+  "description": "Jasmine reporter for the blink(1) usb led",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siclo/jasmine-blink1-reporter.git"
+  },
+  "keywords": [
+    "jasmine",
+    "blink(1)",
+    "blink1"
+  ],
+  "author": "Simon Cloutier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siclo/jasmine-blink1-reporter/issues"
+  },
+  "homepage": "https://github.com/siclo/jasmine-blink1-reporter#readme"
+}
