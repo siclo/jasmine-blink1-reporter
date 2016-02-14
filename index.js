@@ -7,6 +7,7 @@ module.exports = function (options) {
 
     this.jasmineStarted = function (suiteInfo) {
         try {
+            self.fail = false;
             self.blink1 = new Blink1();
             self.yellow();
             console.log("Blink1!", suiteInfo);
@@ -16,9 +17,15 @@ module.exports = function (options) {
     };
 
     this.specDone = function (result) {
-        console.log(result);
         if (result.failedExpectations.length > 0) {
+            self.fail = true;
             self.red();
+        }
+    };
+
+    this.jasmineDone = function () {
+        if (!self.fail) {
+            self.green();
         }
     };
 
@@ -28,6 +35,10 @@ module.exports = function (options) {
 
     this.red = function () {
         self.blink1.setRGB(255, 0, 0);
+    };
+
+    this.green = function () {
+        self.blink1.setRGB(0, 255, 0);
     };
 };
 
