@@ -10,7 +10,6 @@ module.exports = function (options) {
             self.fail = false;
             self.blink1 = new Blink1();
             self.yellow();
-            console.log("Blink1!", suiteInfo);
         } catch(e) {
             console.log(e);
         }
@@ -26,6 +25,8 @@ module.exports = function (options) {
     this.jasmineDone = function () {
         if (!self.fail) {
             self.green();
+            self.blink1.close();
+            self.blink1 = undefined;
         }
     };
 
@@ -41,9 +42,3 @@ module.exports = function (options) {
         self.blink1.setRGB(0, 255, 0);
     };
 };
-
-//var Blink1 = require('node-blink1');
-//var blink1 = new Blink1();
-//blink1.fadeToRGB(300, 255, 0, 255, function () {
-//    blink1.off();
-//});
