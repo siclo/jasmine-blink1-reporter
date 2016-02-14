@@ -6,13 +6,9 @@ module.exports = function (options) {
     var self = this;
 
     this.jasmineStarted = function (suiteInfo) {
-        try {
-            self.fail = false;
-            self.blink1 = new Blink1();
-            self.yellow();
-        } catch(e) {
-            console.log(e);
-        }
+        self.fail = false;
+        self.openBlink();
+        self.yellow();
     };
 
     this.specDone = function (result) {
@@ -25,8 +21,16 @@ module.exports = function (options) {
     this.jasmineDone = function () {
         if (!self.fail) {
             self.green();
-            self.blink1.close();
-            self.blink1 = undefined;
+        }
+    };
+
+    this.openBlink = function () {
+        if (!self.blink1) {
+            try {
+                self.blink1 = new Blink1();
+            } catch(e) {
+                console.log(e, e.stack.split('\n'));
+            }
         }
     };
 
